@@ -23,12 +23,12 @@ const groupMessageSchema = new Schema(
       },
     ],
   },
-  { collection: "GROUP_MESSAGES" }
+  { collection: "GROUP_MESSAGES" },
 );
 
 const GroupMessage = model(
   "GroupMessage",
   groupMessageSchema,
-  "GROUP_MESSAGES"
+  "GROUP_MESSAGES",
 );
 module.exports = GroupMessage;
