@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import User from './User.js';
+const mongoose = require('mongoose');
+const User = require('./User.js');
 const { Schema, model } = mongoose;
 
 const groupSchema = new Schema({
@@ -20,4 +20,4 @@ const groupSchema = new Schema({
 }, {collection : "GROUPS"});
 
 const Group = model('Group', groupSchema, 'GROUPS');
-export default Group;
+module.exports = Group;
