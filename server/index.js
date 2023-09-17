@@ -1,10 +1,10 @@
-import express from "express";
-import session from "express-session";
-import passport from "passport";
-import LocalStrategy from "passport-local";
-import mongoose from 'mongoose';
-import model from "./models/model.js";
-import router from "./routes/router.js";
+const express = require("express");
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const mongoose = require('mongoose');
+const model = require("./models/model.js");
+const router = require("./routes/router.js");
 const app = express();
 const port = 5000;
 
