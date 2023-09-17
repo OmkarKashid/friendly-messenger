@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import Message from './Message.js';
+const mongoose = require('mongoose');
+const Message = require('./Message.js');
 const { Schema, model } = mongoose;
 
 const groupMessageSchema = new Schema({
@@ -10,12 +10,12 @@ const groupMessageSchema = new Schema({
   messages : [{
     messageId : {
         type :Schema.Types.ObjectId,
-        ref : 'Message',
+        ref : Message,
         required : true
     },
     referenceId : {
         type : Schema.Types.ObjectId,
-        ref : 'Message',
+        ref : Message,
         default : null
       }
   }]
@@ -23,4 +23,4 @@ const groupMessageSchema = new Schema({
 }, {collection : "GROUP_MESSAGES"});
 
 const GroupMessage = model('GroupMessage', groupMessageSchema, 'GROUP_MESSAGES');
-export default GroupMessage;
+module.exports = GroupMessage;
