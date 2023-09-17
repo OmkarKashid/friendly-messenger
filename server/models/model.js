@@ -1,7 +1,7 @@
-import User from "./User.js";
-import Group from "./Group.js";
-import Message from "./Message.js";
-import PrivateMessage from "./PrivateMessage.js";
-import GroupMessage from "./GroupMessage.js";
+const User = require("./User.js");
+const Group = require("./Group.js");
+const Message = require("./Message.js");
+const PrivateMessage = require("./PrivateMessage.js");
+const GroupMessage = require("./GroupMessage.js");
 
-export default {User, Group, Message, PrivateMessage, GroupMessage};
+module.exports = { User, Group, Message, PrivateMessage, GroupMessage };
