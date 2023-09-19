@@ -2,13 +2,14 @@ const express = require("express");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const model = require("./models/model.js");
 const router = require("./routes/router.js");
 const app = express();
 const port = 5000;
 
-const mongoDb = "mongodb+srv://omkark:V1FWj3nPAOLT9wrt@cluster0.mctftos.mongodb.net/friendlyDB?retryWrites=true&w=majority";
+const mongoDb =
+  "mongodb+srv://omkark:V1FWj3nPAOLT9wrt@cluster0.mctftos.mongodb.net/friendlyDB?retryWrites=true&w=majority";
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
@@ -18,21 +19,20 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(async function(id, done) {
+passport.deserializeUser(async function (id, done) {
   try {
     const user = await model.User.findById(id);
     done(null, user);
-  } catch(err) {
+  } catch (err) {
     done(err);
-  };
+  }
 });
 
 app.use("/", router);
- 
 
 app.listen(port, (err) => {
   if (err) {
