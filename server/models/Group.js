@@ -12,7 +12,7 @@ const groupSchema = new Schema(
       ref: "User",
       required: true,
     },
-    members: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    members: [{ type: Schema.Types.ObjectId, ref: "User" }],
     group_created: {
       type: Date,
       default: () => Date.now(),

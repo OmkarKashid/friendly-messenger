@@ -12,12 +12,12 @@ const groupMessageSchema = new Schema(
       {
         messageId: {
           type: Schema.Types.ObjectId,
-          ref: Message,
+          ref: "Message",
           required: true,
         },
         referenceId: {
           type: Schema.Types.ObjectId,
-          ref: Message,
+          ref: "Message",
           default: null,
         },
       },

@@ -6,10 +6,12 @@ const privateMessageSchema = new Schema(
   {
     senderId: {
       type: Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
     receipientId: {
       type: Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
     messages: [{ type: mongoose.Schema.Types.ObjectId, ref: "Message" }],

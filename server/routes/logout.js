@@ -1,10 +1,10 @@
-import express from "express";
-import path from "path";
+const express = require("express");
+const path = require("path");
 const logoutRouter = express.Router();
 
-import {fileURLToPath} from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// const {fileURLToPath} = require('url');
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 logoutRouter.use(express.urlencoded({ extended: true }));
 
 logoutRouter.get("/", function (req, res, next) {
@@ -16,4 +16,4 @@ logoutRouter.get("/", function (req, res, next) {
   });
 });
 
-export default logoutRouter;
+module.exports = logoutRouter;
