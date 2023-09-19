@@ -3,7 +3,7 @@ const path = require("path");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const User = "../models/User.js";
+const User = require("../models/User.js");
 const loginRouter = express.Router();
 
 // const {fileURLToPath} = require('url');
@@ -30,17 +30,16 @@ passport.use(
   }),
 );
 
-loginRouter.get("/", function (req, res, next) {
-  res.sendFile(path.join(__dirname, "../public/login.html"));
-});
+// loginRouter.get("/", function (req, res, next) {
+//   res.sendFile(path.join(__dirname, "../public/login.html"));
+// });
 loginRouter.post(
   "/",
   passport.authenticate("local", {
-    failureRedirect: "/login",
     failureMessage: true,
   }),
   function (req, res) {
-    res.send(req.user);
+    res.status(200).send(req.user);
   },
 );
 

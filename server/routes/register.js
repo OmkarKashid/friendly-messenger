@@ -2,17 +2,17 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const path = require("path");
 const User = require("../models/User.js");
-const signupRouter = express.Router();
+const registerRouter = express.Router();
 
 // const {fileURLToPath} = require() 'url';
 // const __filename = fileURLToPath(const.meta.url);
 // const __dirname = path.dirname(__filename);
-signupRouter.use(express.urlencoded({ extended: true }));
+registerRouter.use(express.urlencoded({ extended: true }));
 
-signupRouter.get("/", function (req, res, next) {
-  res.sendFile(path.join(__dirname, "../public/signup.html"));
-});
-signupRouter.post("/", async (req, res, next) => {
+// signupRouter.get("/", function (req, res, next) {
+//   res.sendFile(path.join(__dirname, "../public/signup.html"));
+// });
+registerRouter.post("/", async (req, res, next) => {
   try {
     await bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
       // if err, do something
@@ -30,11 +30,11 @@ signupRouter.post("/", async (req, res, next) => {
         image: null,
       });
       const result = await user.save();
-      res.redirect("/");
+      res.status(200).send(result);
     });
   } catch (err) {
     res.send(err);
   }
 });
 
-module.exports = signupRouter;
+module.exports = registerRouter;

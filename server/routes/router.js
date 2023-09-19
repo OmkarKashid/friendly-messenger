@@ -4,7 +4,7 @@ const path = require("path");
 const chats = require("./chats.js");
 const login = require("./login.js");
 const logout = require("./logout.js");
-const signup = require("./signup.js");
+const register = require("./register.js");
 const users = require("./users.js");
 
 // const {fileURLToPath} = 'url';
@@ -13,13 +13,13 @@ const users = require("./users.js");
 router.use(express.urlencoded({ extended: true }));
 
 /*Index Page*/
-router.get("/", function (req, res, next) {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
-});
+// router.get("/", function (req, res, next) {
+//   res.sendFile(path.join(__dirname, "../public/index.html"));
+// });
 /*Routes*/
 router.use("/chats", chats);
 router.use("/login", login);
 router.use("/logout", logout);
-router.use("/signup", signup);
+router.use("/register", register);
 router.use("/users", users);
 module.exports = router;

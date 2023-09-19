@@ -8,11 +8,12 @@ const logoutRouter = express.Router();
 logoutRouter.use(express.urlencoded({ extended: true }));
 
 logoutRouter.get("/", function (req, res, next) {
+  console.log(req.user);
   req.logout(function (err) {
     if (err) {
       return next(err);
     }
-    res.redirect("/");
+    res.status(200).json({ message: "successfully logged out" });
   });
 });
 
